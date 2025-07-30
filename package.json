@@ -1,0 +1,19 @@
+{
+  "name": "anki-highlight",
+  "version": "0.0.0",
+  "description": "highlights words on sites that are already in your anki deck",
+  "license": "MIT",
+  "author": "Luc Mcgrady",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "@types/lodash-es": "^4.17.12",
+    "esbuild": "^0.25.8"
+  },
+  "dependencies": {
+    "lodash-es": "^4.17.21"
+  }
+}
