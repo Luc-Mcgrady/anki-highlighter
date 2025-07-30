@@ -1,10 +1,11 @@
 import * as _ from "lodash-es"
-
+import Rainbow from "rainbowvis.js"
 
 (async () => {
 
     const query = "deck:L::M"
     const match_field = "Hanzi"
+    const mature = 21
     
     const cards_request = {
       "action": "findCards",
@@ -23,12 +24,20 @@ import * as _ from "lodash-es"
     const card_info = (await card_info_req.json())
 
     const card_card_info = _.groupBy(card_info, card=>card.fields[match_field]?.value)
-
-    console.log({card_info,card_card_info})
-
+    
+    const gradient = new Rainbow()
+    
+    gradient.setNumberRange(0, 21)
+    gradient.setSpectrum("red", "green")
+    
     const colorMap = _.mapValues(card_card_info, (cards) => {
-      return "red"
+      const filtered_cards = cards.filter(card => card.interval != 0)
+      const min_ivl = _.minBy(filtered_cards, card => card.interval)?.interval
+      
+      return min_ivl ? "#" + gradient.colourAt(min_ivl) : "lightblue"
     })
+    
+    console.log({colorMap})
 
     // Escape and join all keys into a single regex alternation
     const escapedKeys = Object.keys(colorMap).map(s =>
