@@ -2,10 +2,6 @@ import * as _ from "lodash-es"
 import Rainbow from "rainbowvis.js"
 
 (async () => {
-
-    const query = "deck:L::M"
-    const match_field = "Hanzi"
-    const mature = 21
     
     const cards_request = {
       "action": "findCards",
@@ -27,7 +23,7 @@ import Rainbow from "rainbowvis.js"
     
     const gradient = new Rainbow()
     
-    gradient.setNumberRange(0, 21)
+    gradient.setNumberRange(0, mature)
     gradient.setSpectrum("red", "green")
     
     const colorMap = _.mapValues(card_card_info, (cards) => {
