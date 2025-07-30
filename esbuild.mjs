@@ -19,6 +19,9 @@ await esbuild.build({
 const query = "deck:L::J";
 const match_field = "Kanji";
 const mature = 21;
+const low_colour = "pink";
+const mature_colour = "lightgreen";
+const new_colour = "lightblue";
 `},
   minify: true
 })

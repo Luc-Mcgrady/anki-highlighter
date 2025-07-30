@@ -24,13 +24,13 @@ import Rainbow from "rainbowvis.js"
     const gradient = new Rainbow()
     
     gradient.setNumberRange(0, mature)
-    gradient.setSpectrum("red", "green")
+    gradient.setSpectrum(low_colour, mature_colour)
     
     const colorMap = _.mapValues(card_card_info, (cards) => {
       const filtered_cards = cards.filter(card => card.interval != 0)
       const min_ivl = _.minBy(filtered_cards, card => card.interval)?.interval
       
-      return min_ivl ? "#" + gradient.colourAt(min_ivl) : "lightblue"
+      return min_ivl ? "#" + gradient.colourAt(min_ivl) : new_colour
     })
     
     console.log({colorMap})
