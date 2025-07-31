@@ -46,6 +46,7 @@
 <style>
 	div {
 		font-size: 0;
+		white-space: pre;
 	}
 	span {
 		font-size: 16px;
