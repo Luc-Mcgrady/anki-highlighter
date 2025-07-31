@@ -12,8 +12,18 @@
 
 <h1>Anki card content highlighter</h1>
 
-If you paste some text in your target language below, you can see the content for which you have
-Anki cards highlighted.
+<p>
+	If you paste some text in your target language below, you can see the content for which you have
+	Anki cards highlighted.
+</p>
+
+<p>
+	Make sure you have <a href="https://ankiweb.net/shared/info/2055492159">AnkiConnect</a> installed and with CORS allowing this site
+</p>
+
+<p>
+	Also make sure that Anki is open.
+</p>
 
 <form
 	on:submit={async (e) => {
@@ -23,7 +33,9 @@ Anki cards highlighted.
 		loading = false;
 	}}
 >
-	<input type="submit" disabled={loading} />
+	<div>
+		<input type="submit" disabled={loading} />
+	</div>
 
 	<label>
 		Search Query:
@@ -33,14 +45,30 @@ Anki cards highlighted.
 		Field:
 		<input type="text" bind:value={field} />
 	</label>
-	<textarea bind:value></textarea>
+	{#if loading}
+		<div>Updating card list...</div>
+	{/if}
+	<div>
+		{Object.keys(info).length} Note(s) loaded.
+	</div>
 </form>
 
-{#if loading}
-	<div>Updating card list...</div>
-{/if}
+<hr>
+
 <div>
-	{Object.keys(info).length} Note(s) loaded.
+	<label>
+		Input text:
+		<textarea bind:value></textarea>
+	</label>
 </div>
 
+<hr>
+
 <AnkiHighlighter data={info} {value}></AnkiHighlighter>
+
+<style>
+	form {
+		display: flex;
+		flex-direction: column;
+	}
+</style>
