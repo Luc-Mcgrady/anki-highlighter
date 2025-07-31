@@ -1,5 +1,4 @@
 import * as _ from 'lodash-es';
-import Rainbow from 'rainbowvis.js';
 
 export async function fetch_card_info_groups(query: string, match_field: string) {
 	const cards_request = {
