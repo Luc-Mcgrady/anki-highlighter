@@ -1,10 +1,10 @@
 <script lang="ts">
-	import { fetch_card_info_groups } from '$lib/ankiHighlight';
-	import AnkiHighlighter from './AnkiHighlighter.svelte';
+	import { fetch_card_info_groups } from "$lib/ankiHighlight";
+	import AnkiHighlighter from "./AnkiHighlighter.svelte";
 
-	let search = '';
-	let field = '';
-	let value = '';
+	let search = "";
+	let field = "";
+	let value = "";
 
 	let info = {};
 	let loading = false;
