@@ -37,7 +37,10 @@ Anki cards highlighted.
 </form>
 
 {#if loading}
-	Updating card list
+	<div>Updating card list...</div>
 {/if}
+<div>
+	{Object.keys(info).length} Note(s) loaded.
+</div>
 
 <AnkiHighlighter data={info} {value}></AnkiHighlighter>
