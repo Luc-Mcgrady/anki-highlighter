@@ -1,6 +1,6 @@
 <script lang="ts">
-	import Rainbow from "rainbowvis.js";
 	import * as _ from "lodash-es";
+	import HighlightedWord from "./HighlightedWord.svelte";
 
 	export let data: Record<string, any[]>;
 	export let value: string;
@@ -16,29 +16,13 @@
 	$: console.log({ words, regex, last });
 
 	$: last = words[words.length - 1];
-
-	const gradient = new Rainbow();
-
-	const low_colour = "pink";
-	const mature_colour = "lightgreen";
-	const new_colour = "lightblue";
-
-	gradient.setNumberRange(0, 21);
-	gradient.setSpectrum(low_colour, mature_colour);
-
-	$: colorMap = _.mapValues(data, (cards) => {
-		const filtered_cards = cards.filter((card) => card.interval != 0);
-		const min_ivl = _.minBy(filtered_cards, (card) => card.interval)?.interval;
-
-		return min_ivl ? "#" + gradient.colourAt(min_ivl) : new_colour;
-	});
 </script>
 
 <div>
 	{#each words as word, i}
 		{@const last = words[i - 1]}
 		<span>{value.slice((last?.index ?? 0) + ((last ?? [])[0]?.length ?? 0), word.index)}</span>
-		<span class="highlight" style:background-color={colorMap[word[0]]}>{word[0]}</span>
+		<HighlightedWord cards={data[word[0]]}>{word[0]}</HighlightedWord>
 	{/each}
 	<span>{value.slice((last?.index ?? 0) + ((last ?? [])[0]?.length ?? 0), value.length)}</span>
 </div>
