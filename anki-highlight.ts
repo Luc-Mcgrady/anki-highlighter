@@ -36,7 +36,7 @@ import Rainbow from "rainbowvis.js"
     console.log({colorMap})
 
     // Escape and join all keys into a single regex alternation
-    const escapedKeys = Object.keys(colorMap).map(s =>
+    const escapedKeys = Object.keys(colorMap).sort(((a, b) => b.length - a.length)).map(s =>
       s.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&')
     );
     const combinedRegex = new RegExp(`(${escapedKeys.join("|")})`, "g");
