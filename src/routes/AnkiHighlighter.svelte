@@ -1,6 +1,6 @@
 <script lang="ts">
-	import Rainbow from "rainbowvis.js";
-	import * as _ from "lodash-es"
+	import Rainbow from 'rainbowvis.js';
+	import * as _ from 'lodash-es';
 
 	export let data: Record<string, any[]>;
 	export let value: string;
@@ -17,21 +17,21 @@
 
 	$: last = words[words.length - 1];
 
-	const gradient = new Rainbow()
-    
-	const low_colour = "pink"
-	const mature_colour = "lightgreen"
-	const new_colour = "lightblue"
+	const gradient = new Rainbow();
 
-    gradient.setNumberRange(0, 21)
-    gradient.setSpectrum(low_colour, mature_colour)
-    
+	const low_colour = 'pink';
+	const mature_colour = 'lightgreen';
+	const new_colour = 'lightblue';
+
+	gradient.setNumberRange(0, 21);
+	gradient.setSpectrum(low_colour, mature_colour);
+
 	$: colorMap = _.mapValues(data, (cards) => {
-      const filtered_cards = cards.filter(card => card.interval != 0)
-      const min_ivl = _.minBy(filtered_cards, card => card.interval)?.interval
-      
-      return min_ivl ? "#" + gradient.colourAt(min_ivl) : new_colour
-    })
+		const filtered_cards = cards.filter((card) => card.interval != 0);
+		const min_ivl = _.minBy(filtered_cards, (card) => card.interval)?.interval;
+
+		return min_ivl ? '#' + gradient.colourAt(min_ivl) : new_colour;
+	});
 </script>
 
 <div>
@@ -44,9 +44,6 @@
 </div>
 
 <style>
-	span.highlight {
-
-	}
 	div {
 		font-size: 0;
 	}

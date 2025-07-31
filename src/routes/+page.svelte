@@ -7,7 +7,7 @@
 	let value = '';
 
 	let info = {};
-	let loading = false
+	let loading = false;
 </script>
 
 <h1>Anki card content highlighter</h1>
@@ -18,12 +18,12 @@ Anki cards highlighted.
 <form
 	on:submit={async (e) => {
 		e.preventDefault();
-		loading = true
+		loading = true;
 		info = await fetch_card_info_groups(search, field);
-		loading = false
+		loading = false;
 	}}
 >
-	<input type="submit" disabled={loading}/>
+	<input type="submit" disabled={loading} />
 
 	<label>
 		Search Query:
