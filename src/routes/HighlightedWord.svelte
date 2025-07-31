@@ -17,7 +17,7 @@
 <style>
 	button {
 		font-size: 16px;
-        padding: 0;
+		padding: 0;
 		border: 2px transparent solid;
 		cursor: pointer;
 	}
