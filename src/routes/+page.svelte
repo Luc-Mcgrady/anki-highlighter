@@ -18,12 +18,11 @@
 </p>
 
 <p>
-	Make sure you have <a href="https://ankiweb.net/shared/info/2055492159">AnkiConnect</a> installed and with CORS allowing this site
+	Make sure you have <a href="https://ankiweb.net/shared/info/2055492159">AnkiConnect</a> installed and
+	with CORS allowing this site
 </p>
 
-<p>
-	Also make sure that Anki is open.
-</p>
+<p>Also make sure that Anki is open.</p>
 
 <form
 	on:submit={async (e) => {
@@ -32,6 +31,7 @@
 		info = await fetch_card_info_groups(search, field);
 		loading = false;
 	}}
+	class="section"
 >
 	<label>
 		Search Query:
@@ -48,12 +48,11 @@
 		{Object.keys(info).length} Note(s) loaded.
 	</div>
 	<div>
-		<input type="submit" disabled={loading} />
+		<input type="submit" disabled={loading} value="Load from Anki" />
 	</div>
-
 </form>
 
-<hr>
+<hr />
 
 <div>
 	<label>
@@ -64,9 +63,11 @@
 	</label>
 </div>
 
-<hr>
+<hr />
 
-<AnkiHighlighter data={info} {value}></AnkiHighlighter>
+<div class="section">
+	<AnkiHighlighter data={info} {value}></AnkiHighlighter>
+</div>
 
 <style>
 	form {
@@ -77,5 +78,11 @@
 	}
 	label {
 		display: contents;
+	}
+	.section {
+		border: 2px solid black;
+		padding: 0.5em;
+		border-radius: 0.5em;
+		background-color: ghostwhite;
 	}
 </style>
