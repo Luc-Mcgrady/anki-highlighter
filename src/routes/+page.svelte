@@ -6,7 +6,8 @@
 	let field = '';
 	let value = '';
 
-    let info = {}
+	let info = {};
+	let loading = false
 </script>
 
 <h1>Anki card content highlighter</h1>
@@ -17,10 +18,12 @@ Anki cards highlighted.
 <form
 	on:submit={async (e) => {
 		e.preventDefault();
-        info = await fetch_card_info_groups(search, field)
+		loading = true
+		info = await fetch_card_info_groups(search, field);
+		loading = false
 	}}
 >
-	<input type="submit" />
+	<input type="submit" disabled={loading}/>
 
 	<label>
 		Search Query:
@@ -32,5 +35,9 @@ Anki cards highlighted.
 	</label>
 	<textarea bind:value></textarea>
 </form>
+
+{#if loading}
+	Updating card list
+{/if}
 
 <AnkiHighlighter data={info} {value}></AnkiHighlighter>
