@@ -33,10 +33,6 @@
 		loading = false;
 	}}
 >
-	<div>
-		<input type="submit" disabled={loading} />
-	</div>
-
 	<label>
 		Search Query:
 		<input type="text" bind:value={search} />
@@ -51,6 +47,10 @@
 	<div>
 		{Object.keys(info).length} Note(s) loaded.
 	</div>
+	<div>
+		<input type="submit" disabled={loading} />
+	</div>
+
 </form>
 
 <hr>
@@ -58,7 +58,9 @@
 <div>
 	<label>
 		Input text:
-		<textarea bind:value></textarea>
+		<div>
+			<textarea bind:value></textarea>
+		</div>
 	</label>
 </div>
 
@@ -68,7 +70,12 @@
 
 <style>
 	form {
-		display: flex;
-		flex-direction: column;
+		display: grid;
+		grid-template-columns: auto auto;
+		gap: 0.25em;
+		width: min(100%, 500px);
+	}
+	label {
+		display: contents;
 	}
 </style>
