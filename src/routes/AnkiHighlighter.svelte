@@ -1,8 +1,6 @@
 <script lang="ts">
-	// export let data: Dictionary<any[]>;
+	export let data: Dictionary<any[]>;
 	export let value: string;
-
-	let data = { bob: '', joe: '' };
 
 	$: regex = RegExp(
 		Object.keys(data)

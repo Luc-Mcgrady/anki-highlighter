@@ -1,10 +1,12 @@
 <script lang="ts">
+	import { fetch_card_info_groups } from '$lib/ankiHighlight';
 	import AnkiHighlighter from './AnkiHighlighter.svelte';
-	import AnkiHighlighterOuter from './AnkiHighlighterOuter.svelte';
 
 	let search = '';
 	let field = '';
 	let value = '';
+
+    let info = {}
 </script>
 
 <h1>Anki card content highlighter</h1>
@@ -13,8 +15,9 @@ If you paste some text in your target language below, you can see the content fo
 Anki cards highlighted.
 
 <form
-	on:submit={(e) => {
+	on:submit={async (e) => {
 		e.preventDefault();
+        info = await fetch_card_info_groups(search, field)
 	}}
 >
 	<input type="submit" />
@@ -30,4 +33,4 @@ Anki cards highlighted.
 	<textarea bind:value></textarea>
 </form>
 
-<AnkiHighlighter {value}></AnkiHighlighter>
+<AnkiHighlighter data={info} {value}></AnkiHighlighter>
