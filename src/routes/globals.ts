@@ -1,13 +1,10 @@
-import Rainbow from "rainbowvis.js";
+import * as d3 from "d3";
 import { writable } from "svelte/store";
 
 export const low_colour = "red";
 export const mature_colour = "green";
-export const new_colour = "blue";
+export const new_colour = "steelblue";
 
-export const gradient = new Rainbow();
-
-gradient.setNumberRange(0, 21);
-gradient.setSpectrum(low_colour, mature_colour);
+export const gradient = d3.scaleLinear([0, 21], [d3.color(low_colour), d3.color(mature_colour)]);
 
 export const selected = writable<any>(null);
