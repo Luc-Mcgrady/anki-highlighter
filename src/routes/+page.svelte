@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { fetch_card_info_groups } from "$lib/ankiHighlight";
 	import AnkiHighlighter from "./AnkiHighlighter.svelte";
+	import { searched_field } from "./globals";
 
 	let search = "";
 	let field = "";
@@ -29,6 +30,7 @@
 		e.preventDefault();
 		loading = true;
 		info = await fetch_card_info_groups(search, field);
+		$searched_field = field;
 		loading = false;
 	}}
 	class="section"

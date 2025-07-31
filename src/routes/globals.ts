@@ -8,3 +8,5 @@ export const new_colour = "steelblue";
 export const gradient = d3.scaleLinear([0, 21], [d3.color(low_colour), d3.color(mature_colour)]);
 
 export const selected = writable<any>(null);
+
+export const searched_field = writable("Front");

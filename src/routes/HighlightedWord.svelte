@@ -1,10 +1,11 @@
 <script lang="ts">
 	import type { HSLColor, RGBColor } from "d3";
-	import { gradient, new_colour } from "./globals";
+	import { searched_field, gradient, new_colour } from "./globals";
 	import * as _ from "lodash-es";
 	import * as d3 from "d3";
 
 	export let cards: any[];
+	export let word: string;
 
 	$: filtered_cards = cards?.filter((card) => card.interval != 0);
 	$: min_ivl = _.minBy(filtered_cards, (card) => card.interval)?.interval;
@@ -17,10 +18,26 @@
 			colour.opacity = 0.5;
 		}
 	}
+
+	function onClick() {
+		fetch("http://localhost:8765", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json"
+			},
+			body: JSON.stringify({
+				action: "guiBrowse",
+				version: 6,
+				params: {
+					query: `${$searched_field}:${word}`
+				}
+			})
+		});
+	}
 </script>
 
-<button style:background-color={colour?.toString()} on:click={() => {}}>
-	<slot></slot>
+<button style:background-color={colour?.toString()} on:click={onClick}>
+	{word}
 </button>
 
 <style>
