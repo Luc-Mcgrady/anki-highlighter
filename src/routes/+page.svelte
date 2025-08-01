@@ -11,6 +11,7 @@
 	let info = {};
 	let loading = false;
 	let website = "";
+	let error = "";
 	onMount(() => {
 		website = window.location.origin;
 	});
@@ -35,9 +36,15 @@
 	on:submit={async (e) => {
 		e.preventDefault();
 		loading = true;
-		info = await fetch_card_info_groups(search, field);
-		$searched_field = field;
-		loading = false;
+		error = "";
+		try {
+			info = await fetch_card_info_groups(search, field);
+			$searched_field = field;
+		} catch (e: any) {
+			error = e.message;
+		} finally {
+			loading = false;
+		}
 	}}
 	class="section"
 >
@@ -59,6 +66,15 @@
 		<input type="submit" disabled={loading} value="Load from Anki" />
 	</div>
 </form>
+
+{#if error}
+	<div class="error">
+		{error} <br />
+		{#if error.match("NetworkError")}
+			(Have you set CORS as specified above?, Is anki running?)
+		{/if}
+	</div>
+{/if}
 
 <hr />
 
@@ -95,5 +111,10 @@
 	}
 	code {
 		background-color: ghostwhite;
+	}
+	.error {
+		color: red;
+		background-color: black;
+		padding: 0.5em;
 	}
 </style>
