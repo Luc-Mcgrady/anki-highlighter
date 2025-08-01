@@ -93,6 +93,15 @@
 	<AnkiHighlighter data={info} {value}></AnkiHighlighter>
 </div>
 
+<hr />
+
+<footer>
+	A site made by <a href="https://www.lucmcgrady.com">Luc Mcgrady</a>
+	<br />
+	Find the <a href="https://github.com/Luc-Mcgrady/anki-highlighter">source code on github</a> and leave
+	a star!
+</footer>
+
 <style>
 	form {
 		display: grid;
