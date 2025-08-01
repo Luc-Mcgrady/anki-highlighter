@@ -17,6 +17,10 @@
 	});
 </script>
 
+<svelte:head>
+	<title>Anki Highlighter</title>
+</svelte:head>
+
 <h1>Anki card content highlighter</h1>
 
 <p>
