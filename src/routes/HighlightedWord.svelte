@@ -36,7 +36,7 @@
 	}
 </script>
 
-<input type="button" value={word} style:background-color={colour?.toString()} on:click={onClick}/>
+<input type="button" value={word} style:background-color={colour?.toString()} on:click={onClick} />
 
 <style>
 	input {

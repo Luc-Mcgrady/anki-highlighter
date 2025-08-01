@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { fetch_card_info_groups } from "$lib/ankiHighlight";
+	import { onMount } from "svelte";
 	import AnkiHighlighter from "./AnkiHighlighter.svelte";
 	import { searched_field } from "./globals";
 
@@ -9,6 +10,10 @@
 
 	let info = {};
 	let loading = false;
+	let website = "";
+	onMount(() => {
+		website = window.location.origin;
+	});
 </script>
 
 <h1>Anki card content highlighter</h1>
@@ -19,11 +24,12 @@
 </p>
 
 <p>
-	Make sure you have <a href="https://ankiweb.net/shared/info/2055492159">AnkiConnect</a> installed and
-	with CORS allowing this site
+	Make sure you have <a href="https://ankiweb.net/shared/info/2055492159">AnkiConnect</a
+	>(2055492159) installed and include <code>{website}</code> in the <code>webCorsOriginList</code> section
+	of the addon config.
 </p>
 
-<p>Also make sure that Anki is open.</p>
+<p>Also make sure that Anki remains open while you use this tool</p>
 
 <form
 	on:submit={async (e) => {
@@ -85,6 +91,9 @@
 		border: 2px solid black;
 		padding: 0.5em;
 		border-radius: 0.5em;
+		background-color: ghostwhite;
+	}
+	code {
 		background-color: ghostwhite;
 	}
 </style>
