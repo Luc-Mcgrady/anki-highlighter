@@ -5,7 +5,7 @@
 	import { searched_field } from "./globals";
 
 	let search = "";
-	let field = "";
+	let field = "Front";
 	let value = "";
 
 	let info = {};
@@ -49,12 +49,12 @@
 	class="section"
 >
 	<label>
-		Search Query:
-		<input type="text" bind:value={search} />
+		Search query:
+		<input type="text" placeholder="Search" bind:value={search} />
 	</label>
 	<label>
-		Field:
-		<input type="text" bind:value={field} />
+		Note field name:
+		<input type="text" placeholder="Field" bind:value={field} />
 	</label>
 	{#if loading}
 		<div>Updating card list...</div>
