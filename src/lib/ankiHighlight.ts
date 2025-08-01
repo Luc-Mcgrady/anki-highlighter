@@ -5,7 +5,7 @@ export async function fetch_card_info_groups(query: string, match_field: string)
 		action: "findCards",
 		version: 6,
 		params: {
-			query
+			query: `(${match_field}:*) (${query || "*"})`
 		}
 	};
 
