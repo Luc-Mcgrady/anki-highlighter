@@ -36,16 +36,22 @@
 	}
 </script>
 
-<input type="button" value={word} style:background-color={colour?.toString()} on:click={onClick} />
+<span
+	style:background-color={colour?.toString()}
+	on:click={onClick}
+	on:keypress={onClick}
+	tabindex="0"
+	role="button">{word}</span
+>
 
 <style>
-	input {
+	span {
 		font-size: 16px;
 		padding: 0;
 		border: 2px transparent solid;
 		cursor: pointer;
 	}
-	input:hover {
+	span:hover {
 		border: 2px black solid;
 	}
 </style>

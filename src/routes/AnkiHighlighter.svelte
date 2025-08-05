@@ -21,10 +21,8 @@
 <div>
 	{#each words as word, i}
 		{@const last = words[i - 1]}
-		<span>{value.slice((last?.index ?? 0) + ((last ?? [])[0]?.length ?? 0), word.index)}</span>
-		{#if word[0]}
-			<HighlightedWord cards={data[word[0]]} word={word[0]} />
-		{/if}
+		<span>{value.slice((last?.index ?? 0) + ((last ?? [])[0]?.length ?? 0), word.index)}</span
+		>{#if word[0]}<HighlightedWord cards={data[word[0]]} word={word[0]} />{/if}
 	{/each}
 	<span>{value.slice((last?.index ?? 0) + ((last ?? [])[0]?.length ?? 0), value.length)}</span>
 </div>
